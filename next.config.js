@@ -6,6 +6,11 @@ const nextConfig = {}
 module.exports = nextConfig
 module.exports = {
     images: {
-      domains: ["*"], // Keep it empty initially
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'lh3.googleusercontent.com',
+        },
+      ],
     },
 };

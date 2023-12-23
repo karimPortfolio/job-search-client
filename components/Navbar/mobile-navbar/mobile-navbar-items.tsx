@@ -13,10 +13,14 @@ import Brand from "../navbar-brand";
 import MobileNavLinks from "./mobile-navbar-links";
 import MobileNavAuthButtons from "./mobile-navbar-auth-buttons";
 import SocialLinks from "../../social-links";
+import {useSelector} from 'react-redux';
 
 const MobileNavbarItems = () => {
+
+  const Auth = useSelector( (state: any) => state.auth);
+
   return (
-    <div>
+    <div className={Auth.AUTH ? 'order-1 flex justify-center items-center' : 'order-2 ml-auto'}>
       <Sheet>
         <SheetTrigger>
           <Button variant="ghost" className="px-3 py-3">
@@ -30,7 +34,9 @@ const MobileNavbarItems = () => {
             </SheetTitle>
             <SheetDescription>
               <MobileNavLinks />
-              <MobileNavAuthButtons />
+              <MobileNavAuthButtons
+              auth = {Auth}
+              />
             </SheetDescription>
           </SheetHeader>
           <SheetFooter className="justify-center items-center pt-20">
