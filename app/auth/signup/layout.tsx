@@ -1,4 +1,8 @@
+'use client'
+
 import Navbar from "@/components/Navbar/navbar"
+import { Provider } from "react-redux"
+import store from '../../../redux/store';
 
 
 const SignUpLayout = ({
@@ -6,9 +10,11 @@ const SignUpLayout = ({
 }: {children: React.ReactNode}) => {
     return(
         <>
-            <main>
-                {children}
-            </main>
+            <Provider store={store}>
+                <main>
+                    {children}
+                </main>
+            </Provider>
         </>
     )
 }

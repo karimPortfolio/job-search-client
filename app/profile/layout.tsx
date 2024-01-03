@@ -1,12 +1,14 @@
-import store from '../../redux/store';
-import { Provider } from 'react-redux';
+'use client'
 
-const DashboardLayout = ({
+import { Provider } from 'react-redux';
+import store from '../../redux/store';
+
+
+const ProfileLayout = ({
     children
 }: {
     children:React.ReactNode
 }) => {
-    
     return(
         <Provider store={store}>
             <main>
@@ -17,4 +19,4 @@ const DashboardLayout = ({
 
 }
 
-export default DashboardLayout;
+export default ProfileLayout;

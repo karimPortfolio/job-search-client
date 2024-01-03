@@ -1,13 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { NextResponse } from "next/server"
+import { jwtDecode } from "jwt-decode"
 
 interface InitialState {
     AUTH: boolean,
+    expired: boolean,
     user: {} | null,
 }
 
 const initialState: InitialState = {
     AUTH:false,
+    expired:false,
     user:null
 }
 
@@ -18,9 +21,19 @@ const GlobalAuthSlice = createSlice({
     reducers:{
         checkAuth: (state) => {
             const token = window.localStorage.getItem('token_id');
+            const currentTimestamp = Math.floor(Date.now() / 1000);
             if (!token)
             {
                 NextResponse.redirect(`${process.env.NEXT_PUBLIC_HOST}/auth/signin`);
+            }
+            else if (typeof jwtDecode(token).exp !== 'undefined' && jwtDecode(token).exp < currentTimestamp)
+            {
+                state.AUTH = false;
+                state.expired = true;
+                state.user={}
+                window.localStorage.removeItem('token_id');
+                window.localStorage.removeItem('profile');
+                window.localStorage.removeItem('provider');
             }
             else
             {
@@ -28,8 +41,6 @@ const GlobalAuthSlice = createSlice({
                 const provider = window.localStorage.getItem('provider');
                 let user: any = window.localStorage.getItem('profile');
                 user = JSON.parse(user);
-                console.log(provider);
-                console.log(user);
                 if (provider === 'google')
                 {
                     const googleUser = {

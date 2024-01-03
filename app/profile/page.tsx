@@ -5,7 +5,7 @@ import { useAppDispatch } from '@/redux/store';
 import { headers } from 'next/dist/client/components/headers';
 import { useEffect } from 'react';
 
-const Dashboard = () => {
+const ProfilePage = () => {
 
     const dispatch = useAppDispatch();
 
@@ -16,9 +16,9 @@ const Dashboard = () => {
 
     return(
         <>
-            <h1 className="text-center text-7xl mt-20">Dahsboard Page</h1>
+            <h1 className="text-center text-7xl mt-20">Profile Page</h1>
         </>
     )
 }
 
-export default Dashboard;
+export default ProfilePage;

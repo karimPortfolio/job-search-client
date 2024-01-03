@@ -8,10 +8,13 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 
 const PlaceHolders = () => {
+
+    const placeHoldersNum = 3;
+
     return(
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 px-4 sm:px-9 md:px-14 lg:px-20">
             {
-                [1, 2, 3].map( (index, value) => (
+                Array.from({ length: placeHoldersNum }, (_, index) => (
                     <Card 
                     key={index}
                     className='shadow-md border-0 mt-7'

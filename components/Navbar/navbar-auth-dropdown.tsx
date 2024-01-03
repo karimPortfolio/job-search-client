@@ -10,6 +10,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage 
+} from "@/components/ui/avatar"
+
+import {
     User,
     Settings,
     LogOut
@@ -17,9 +23,9 @@ import {
 
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { ProfileAvatar } from "./profileAvatar";
 
 
+//interfaces
 interface Props {
   user: {
     id: string;
@@ -35,7 +41,9 @@ const NavbarAuthDropdown = ({
     handleLogout 
 }: Props) => {
 
-
+  const userNameArr = user.fullName?.split(' ');
+  const firstNameLetter = userNameArr[0][0];
+  const lastNameLetter = userNameArr[userNameArr.length - 1][0];
 
   return (
     <DropdownMenu>
@@ -44,10 +52,10 @@ const NavbarAuthDropdown = ({
         variant="destructive" 
         className="relative h-11 w-11 rounded-full px-0 py-0 bg-slate-400"
         >
-            <ProfileAvatar
-            profileImgUrl={user.profileImgUrl || 'undefined'}
-            fullName={user.fullName}
-            />
+            <Avatar className="h-11 w-11">
+                <AvatarImage src={user.profileImgUrl} alt="user profile image" />
+                <AvatarFallback className="bg-blue-500">{firstNameLetter+lastNameLetter}</AvatarFallback>
+            </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>

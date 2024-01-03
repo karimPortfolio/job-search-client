@@ -15,12 +15,12 @@ const SignInPage = () => {
     },[])
 
     return(
-        <Provider store={store}>
+        // <Provider store={store}>
             <div className="grid grid-cols-1 lg:grid-cols-3 h-screen">
                 <SideImgSection/>
                 <AuthSection/>
             </div>
-        </Provider>
+        // </Provider>
     );
 }
 

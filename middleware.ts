@@ -13,12 +13,12 @@ export function middleware(request: NextRequest) {
 
     const token = checkAuth(request);
 
-    if (!token)
-    {
-        return NextResponse.redirect(new URL('/auth/signin', request.url));
-    }
+    // if (!token)
+    // {
+    //     return NextResponse.redirect(new URL('/auth/signin', request.url));
+    // }
 
-    return NextResponse.next();
+    // return NextResponse.next();
     // if (request.nextUrl.pathname.startsWith('/dashboard')) 
     // {
     //     if (!token)

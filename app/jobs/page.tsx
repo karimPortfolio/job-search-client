@@ -1,10 +1,13 @@
+import JobsSection from "./_components/jobs-section/jobs-section";
+import SearchSection from "./_components/search-section/search-section";
 
 
 const JobsPage = () => {
     return(
-        <div>
-            Jobs Page
-        </div>
+        <>
+            <SearchSection/>
+            <JobsSection/>
+        </>
     )
 }
 

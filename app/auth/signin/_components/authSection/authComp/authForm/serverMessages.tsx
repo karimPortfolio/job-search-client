@@ -10,9 +10,6 @@ import { useEffect, useState } from "react";
 
 const ServerMessages = ({response}: any) => {
 
-
-    console.log(response);
-
     if (!response || response.response === null || typeof response.response === 'undefined')
     {
         return null;

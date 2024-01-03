@@ -36,7 +36,7 @@ const Navbar = () => {
             setScreenWidth(window.innerWidth);
         }
         dispatch(checkAuth());
-    },[screenWidth])
+    },[screenWidth, dispatch])
 
     if (typeof window !== 'undefined')
     {

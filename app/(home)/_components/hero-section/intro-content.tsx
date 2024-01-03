@@ -1,3 +1,5 @@
+'use client'
+
 import FloatingCard from "./floating-card";
 
 
@@ -6,10 +8,10 @@ const IntroContent = () => {
         <div className="pt-[140px]">
             <FloatingCard />
             <h1 className="text-center font-DM-sans  max-[500px]:text-4xl max-[330px]:text-3xl max-[400px]:mx-2 text-6xl font-semibold">
-                Let your 
+                Let your
+                 {/* box-decoration-slice bg-gradient-to-r from-[#4376ea] to-[#021c64]  */}
                 <span 
-                className="box-decoration-slice bg-gradient-to-r from-[#4376ea] to-[#021c64] text-white
-                ml-3">
+                className=" ml-3 bg-clip-text text-transparent bg-gradient-to-r from-[#4376ea] to-[#021c64]">
                     ambition
                 </span>
             </h1>

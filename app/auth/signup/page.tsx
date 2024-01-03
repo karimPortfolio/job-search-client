@@ -13,12 +13,12 @@ const SignUpPage = () => {
     },[])
 
     return (
-        <Provider store = {store}>
+        // <Provider store = {store}>
             <div className="grid lg:grid-cols-3 h-screen">
                 <TypographySection/>
                 <AuthSection/>
             </div>
-        </Provider>
+        // </Provider>
     );
 }
 

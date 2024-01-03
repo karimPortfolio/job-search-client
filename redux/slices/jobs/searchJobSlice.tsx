@@ -1,9 +1,19 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { fetchMatchedJobs } from "../../api/jobs/searchJobThunk";
 
-const initialState = {
+interface InitialState {
+  loading: boolean;
+  jobs: {}[];
+  searchValue: string | null;
+  location: string | null;
+  error: string | undefined;
+}
+
+const initialState: InitialState = {
   loading: false,
-  jobs: [],
+  jobs:[],
+  searchValue: null,
+  location: null,
   error: "",
 };
 
@@ -19,13 +29,14 @@ const SearchJobSlice = createSlice({
       fetchMatchedJobs.fulfilled,
       (state, { payload }: PayloadAction<any>) => {
         state.loading = false;
-        state.jobs = payload;
+        state.jobs = payload.jobs;
+        state.searchValue = payload.search;
+        state.location = payload.location;
       }
     );
     builder.addCase(fetchMatchedJobs.rejected, (state, action) => {
       state.jobs = [];
-      state.error =
-        typeof action.error.message !== "undefined" ? action.error.message : "";
+      state.error = action.error?.message;
     });
   },
 });

@@ -11,12 +11,12 @@ import { useEffect, useState } from "react";
 const ServerMessages = ({response}: any) => {
 
 
-    console.log(response);
+    if (!response || response.response === null || typeof response.response === 'undefined')
+    {
+        return null;
+    }
 
-    if (!response ||
-        typeof response === 'undefined' ||
-        response.response === null ||
-        response.response.type === 'success')
+    if (response.response.type === 'success')
     {
         return null;
     }

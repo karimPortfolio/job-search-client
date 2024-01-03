@@ -37,7 +37,7 @@ const FormContainer = ({isShows}: any) => {
     const router = useRouter();
 
     useEffect( () => {
-        if (response.response !== null && response.response.type === 'success')
+        if (response.response !== null && response.response?.type === 'success')
         {
             router.push('/');
         }
