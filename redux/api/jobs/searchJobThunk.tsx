@@ -1,17 +1,21 @@
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-interface formData {
+interface Payload {
     searchValue: string,
-    location: string
+    location: string,
+    page: number
 }
 
 export const fetchMatchedJobs = createAsyncThunk(
-    "matchedJobs/fetchMatchedJobs", async (formData: formData, {rejectWithValue}) => {
-        const url = `${process.env.NEXT_PUBLIC_API_ENDPOINTS_HOST}/jobs/`
+    "matchedJobs/fetchMatchedJobs", async (payload: Payload, {rejectWithValue}) => {
+        const url = `${process.env.NEXT_PUBLIC_API_ENDPOINTS_HOST}/jobs?page=${payload.page}`;
+        const formData = {
+            searchValue: payload.searchValue,
+            location: payload.location
+        };
         try
         {
-            // console.log(formData);
             const response = await fetch(url, {
                 method:'POST',
                 body: JSON.stringify(formData),

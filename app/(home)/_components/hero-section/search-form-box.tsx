@@ -32,12 +32,13 @@ const SearchFormBox = () => {
     setLoading(true);
     setTimeout(() => {
       if (searchValue !== "") {
-        const formData = {
+        const payload = {
           searchValue: searchValue,
           location: location,
+          page:1
         };
         //call to the thunk async function fetchMatchedJobs
-        dispatch(fetchMatchedJobs(formData));
+        dispatch(fetchMatchedJobs(payload));
         // Use the router object to push a new path
         router.push("/jobs");
       }
